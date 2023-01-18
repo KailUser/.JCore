@@ -1,5 +1,5 @@
 # .JCore
-https://img.shields.io/github/languages/code-size/KailUser/.JCore?style=flat-square
+[File size](https://img.shields.io/github/languages/code-size/KailUser/.JCore?style=flat-square)
 
 .JCore is core on the python created for you
 
