@@ -1,5 +1,4 @@
 # .JCore
-![GitHub branch checks state](https://img.shields.io/github/checks-status/KailUser/.JCore/main?style=flat-square)
 ![GitHub language count](https://img.shields.io/github/languages/count/KailUser/.JCore?style=flat-square)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/KailUser/.JCore?style=flat-square)
 
