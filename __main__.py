@@ -1,14 +1,11 @@
-import webbrowser
 import colorama
 import sys
 import os
-import time
-import sqlite3
 from plugins import core as a
 from colorama import Fore, Back, Style
 
 colorama.init()
-options = ['Site parsing', 'Ping' , 'Create DB' ,'GitHub', 'Exit']
+options = ['Site parsing', 'Ping' , 'Port Check' , 'Site Status' , 'Create DB' ,'GitHub', 'Exit']
 
 def display_menu():
     print('Please select an option:')
@@ -25,29 +22,15 @@ def handle_selection(selection):
         print(a.ping.ping())
     elif selection == 3:
         os.system('cls')
-        print("Creating DB...")
-        #connect to or create a new database
-        conn = sqlite3.connect(f'main.db')
-        time.sleep(1)
-        #create a cursor object
-        cursor = conn.cursor()
-        print("Create table")
-        #create a table
-        cursor.execute('''CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)''')
-        time.sleep(1)
-        #commit the changes
-        print("Commit changes")
-        conn.commit()
-        #close the connection
-        time.sleep(2)
-        print("Close connection")
-        conn.close()
-        os.system("cls")
-        sys.exit()
+        print(a.ping.check_port())
     elif selection == 4:
         os.system('cls')
-        webbrowser.open("https://github.com/KailUser/.JCore")
+        print(a.ping.check_status())
     elif selection == 5:
+        print(a.DB.DB())
+    elif selection == 6:
+        a.GH.Git()
+    elif selection == 7:
         os.system('cls')
         quit()
     else:
