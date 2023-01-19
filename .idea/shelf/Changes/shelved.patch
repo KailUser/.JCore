@@ -1,0 +1,248 @@
+Index: plugins/core.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import requests\r\nfrom bs4 import BeautifulSoup\r\nimport os\r\nclass parser():\r\n    def parser():\r\n        url = input(\"Enter the URL: \")\r\n        element = input(\"Enter the element you want to find: \")\r\n\r\n        response = requests.get(url)\r\n        soup = BeautifulSoup(response.text, 'html.parser')\r\n\r\n        # Find all elements matching the input\r\n        elements = soup.find_all(element)\r\n        for e in elements:\r\n            os.system(\"cls\")\r\n            print(e)\r\nclass ping():\r\n    def ping():\r\n        Host = input(\"Host for ping: \")\r\n        Ping = os.system(\"ping /n 10 /l 50 /w 20000  \" + Host)\r\n\r\n        
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/plugins/core.py b/plugins/core.py
+--- a/plugins/core.py	(revision 81a1fdbd72e083b5b9ba438f67fd15d8032f8fcb)
++++ b/plugins/core.py	(date 1674128272027)
+@@ -1,6 +1,10 @@
++# -*- coding: utf-8 -*-
++import time
++import webbrowser
+ import requests
+ from bs4 import BeautifulSoup
+ import os
++import socket
+ class parser():
+     def parser():
+         url = input("Enter the URL: ")
+@@ -14,9 +18,39 @@
+         for e in elements:
+             os.system("cls")
+             print(e)
+-class ping():
++            input("Press Enter to exit")
++class hosts():
+     def ping():
+         Host = input("Host for ping: ")
+         Ping = os.system("ping /n 10 /l 50 /w 20000  " + Host)
+-
+-        
+\ No newline at end of file
++    def check_port():
++        host = input("Enter the host URL: ")
++        port = int(input("Enter the port number: "))
++        try:
++            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
++            sock.settimeout(5)
++            result = sock.connect_ex((host, port))
++            if result == 0:
++                print(f'Port {port} is open on host {host}')
++            else:
++                print(f'Port {port} is closed on host {host}')
++            sock.close()
++        except socket.gaierror:
++            print(f'Cannot resolve host: {host}')
++        except socket.error:
++            print(f'Cannot connect to host: {host}')
++        time.sleep(5)
++    def check_status():
++        url = input("Enter the URL: ")
++        try:
++            response = requests.get(url)
++            if response.status_code == 200:
++                print(f'{url} is up and running. Status code: {response.status_code}')
++            else:
++                print(f'{url} returned status code {response.status_code}')
++        except requests.exceptions.RequestException as e:
++            print(f'{url} is down. Reason: {e}')
++        time.sleep(5)
++class GitHub():
++    def Git():
++        webbrowser.open("https://github.com/KailUser/.JCore")
+\ No newline at end of file
+Index: .idea/.JCore.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.JCore.iml b/.idea/.JCore.iml
+new file mode 100644
+--- /dev/null	(date 1674126592660)
++++ b/.idea/.JCore.iml	(date 1674126592660)
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.JVenv" />
++      <excludeFolder url="file://$MODULE_DIR$/venv" />
++    </content>
++    <orderEntry type="jdk" jdkName="Python 3.10 (.JCore)" jdkType="Python SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/inspectionProfiles/Project_Default.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+new file mode 100644
+--- /dev/null	(date 1674125914578)
++++ b/.idea/inspectionProfiles/Project_Default.xml	(date 1674125914578)
+@@ -0,0 +1,12 @@
++<component name="InspectionProjectProfileManager">
++  <profile version="1.0">
++    <option name="myName" value="Project Default" />
++    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
++      <option name="ignoredIdentifiers">
++        <list>
++          <option value="cv2.*" />
++        </list>
++      </option>
++    </inspection_tool>
++  </profile>
++</component>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1674126592674)
++++ b/.idea/misc.xml	(date 1674126592674)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 (.JCore)" project-jdk-type="Python SDK" />
++</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1674125914639)
++++ b/.idea/modules.xml	(date 1674125914639)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/.JCore.iml" filepath="$PROJECT_DIR$/.idea/.JCore.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1674125914674)
++++ b/.idea/vcs.xml	(date 1674125914674)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: __main__.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import webbrowser\r\nimport colorama\r\nimport sys\r\nimport os\r\nimport time\r\nimport sqlite3\r\nfrom plugins import core as a\r\nfrom colorama import Fore, Back, Style\r\n\r\ncolorama.init()\r\noptions = ['Site parsing', 'Ping' , 'Create DB' ,'GitHub', 'Exit']\r\n\r\ndef display_menu():\r\n    print('Please select an option:')\r\n    for i, option in enumerate(options):\r\n            print(Fore.RED + f'{i+1}. {option}')\r\n\r\n\r\ndef handle_selection(selection):\r\n    if selection == 1:\r\n        os.system('cls')\r\n        print(a.parser.parser())\r\n    elif selection == 2:\r\n        os.system('cls')\r\n        print(a.ping.ping())\r\n    elif selection == 3:\r\n        os.system('cls')\r\n        print(\"Creating DB...\")\r\n        #connect to or create a new database\r\n        conn = sqlite3.connect(f'main.db')\r\n        time.sleep(1)\r\n        #create a cursor object\r\n        cursor = conn.cursor()\r\n        print(\"Create table\")\r\n        #create a table\r\n        cursor.execute('''CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)''')\r\n        time.sleep(1)\r\n        #commit the changes\r\n        print(\"Commit changes\")\r\n        conn.commit()\r\n        #close the connection\r\n        time.sleep(2)\r\n        print(\"Close connection\")\r\n        conn.close()\r\n        os.system(\"cls\")\r\n        sys.exit()\r\n    elif selection == 4:\r\n        os.system('cls')\r\n        webbrowser.open(\"https://github.com/KailUser/.JCore\")\r\n    elif selection == 5:\r\n        os.system('cls')\r\n        quit()\r\n    else:\r\n        print('Invalid selection')\r\n\r\nif __name__ == '__main__':\r\n    display_menu()\r\n    selection = int(input())\r\n    handle_selection(selection)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1251
+===================================================================
+diff --git a/__main__.py b/__main__.py
+--- a/__main__.py	(revision 81a1fdbd72e083b5b9ba438f67fd15d8032f8fcb)
++++ b/__main__.py	(date 1674128254232)
+@@ -1,4 +1,3 @@
+-import webbrowser
+ import colorama
+ import sys
+ import os
+@@ -8,7 +7,7 @@
+ from colorama import Fore, Back, Style
+ 
+ colorama.init()
+-options = ['Site parsing', 'Ping' , 'Create DB' ,'GitHub', 'Exit']
++options = ['Site Parsing', 'Check Site Status' , 'Check Port' , 'Ping' , 'Create DB' ,'GitHub', 'Exit']
+ 
+ def display_menu():
+     print('Please select an option:')
+@@ -21,9 +20,15 @@
+         os.system('cls')
+         print(a.parser.parser())
+     elif selection == 2:
+-        os.system('cls')
+-        print(a.ping.ping())
++        os.system("cls")
++        print(a.hosts.check_status())
+     elif selection == 3:
++        os.system("cls")
++        print(a.hosts.check_port())
++    elif selection == 4:
++        os.system('cls')
++        print(a.hosts.ping())
++    elif selection == 5:
+         os.system('cls')
+         print("Creating DB...")
+         #connect to or create a new database
+@@ -44,10 +49,10 @@
+         conn.close()
+         os.system("cls")
+         sys.exit()
+-    elif selection == 4:
++    elif selection == 6:
+         os.system('cls')
+-        webbrowser.open("https://github.com/KailUser/.JCore")
+-    elif selection == 5:
++        a.GitHub.Git()
++    elif selection == 7:
+         os.system('cls')
+         quit()
+     else:
+Index: .idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/profiles_settings.xml b/.idea/inspectionProfiles/profiles_settings.xml
+new file mode 100644
+--- /dev/null	(date 1674125914664)
++++ b/.idea/inspectionProfiles/profiles_settings.xml	(date 1674125914664)
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <settings>
++    <option name="USE_PROJECT_PROFILE" value="false" />
++    <version value="1.0" />
++  </settings>
++</component>
+\ No newline at end of file
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1251
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1674125921252)
++++ b/.idea/.gitignore	(date 1674125921252)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
