@@ -75,4 +75,3 @@ class DB():
 class GH():
     def Git():
         webbrowser.open("https://github.com/KailUser/.JCore")
-        
