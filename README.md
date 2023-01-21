@@ -25,7 +25,10 @@ Install my-project with python
 ## ScreenShots
 
 ## Screenshots
-![Main Script](https://i.ibb.co/Z22YVc4/cmd-5n-Er6-CLw-LC.png)
+![Main Script](https://i.ibb.co/Z22YVc4/cmd-5n-Er6-CLw-LC.png)\
+
+![Core](https://i.ibb.co/ZVCRwGf/ray-so-export.png)
+
 ## Version
 
 | Version 	| Support 	| Status             	|
