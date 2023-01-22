@@ -21,12 +21,11 @@ Install my-project with python
     pip install -r requirements.txt
     python __main__.py
 ```
-    
-## ScreenShots
 
 ## Screenshots
 ![Main Script](https://i.ibb.co/Z22YVc4/cmd-5n-Er6-CLw-LC.png)\
 
+## Example Code
 ![Core](https://i.ibb.co/ZVCRwGf/ray-so-export.png)
 
 ## Version
