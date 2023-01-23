@@ -1,19 +1,20 @@
-import requests
-from bs4 import BeautifulSoup
 import os
 import socket
-import time
 import sqlite3
 import sys
-import os
+import time
 import webbrowser
+
+import requests
+from bs4 import BeautifulSoup
+
 
 class parser():
     def parser():
         url = input("Enter the URL: ")
         element = input("Enter the element you want to find: ")
 
-        response = requests.get(url)
+        response = requests.get(f"http://{url}")
         soup = BeautifulSoup(response.text, 'html.parser')
 
         # Find all elements matching the input
@@ -21,10 +22,13 @@ class parser():
         for e in elements:
             os.system("cls")
             print(e)
+
+
 class ping():
     def ping():
         Host = input("Host for ping: ")
         Ping = os.system("ping /n 10 /l 50 /w 20000  " + Host)
+
     def check_port():
         host = input("Enter the host URL: ")
         port = int(input("Enter the port number: "))
@@ -41,37 +45,45 @@ class ping():
             print(f'Cannot resolve host: {host}')
         except socket.error:
             print(f'Cannot connect to host: {host}')
+
     def check_status():
         url = input("Enter the URL: ")
         try:
-            response = requests.get(url)
+            response = requests.get(f"http://{url}")
             if response.status_code == 200:
-                print(f'{url} is up and running')
+                print(f'{url} is up and running. Code {response.status_code}')
+                time.sleep(3)
             else:
                 print(f'{url} returned status code {response.status_code}')
+                time.sleep(3)
         except requests.exceptions.RequestException as e:
             print(f'{url} is down. Reason: {e}')
+            time.sleep(3)
+
+
 class DB():
     def DB():
         print("Creating DB...")
-        #connect to or create a new database
-        conn = sqlite3.connect(f'main.db')
+        # connect to or create a new database
+        conn = sqlite3.connect('main.db')
         time.sleep(1)
-        #create a cursor object
+        # create a cursor object
         cursor = conn.cursor()
         print("Create table")
-        #create a table
+        # create a table
         cursor.execute('''CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, age INTEGER)''')
         time.sleep(1)
-        #commit the changes
+        # commit the changes
         print("Commit changes")
         conn.commit()
-        #close the connection
+        # close the connection
         time.sleep(2)
         print("Close connection")
         conn.close()
         os.system("cls")
         sys.exit()
+
+
 class GH():
     def Git():
         webbrowser.open("https://github.com/KailUser/.JCore")

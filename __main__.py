@@ -1,16 +1,21 @@
-import colorama
-import sys
 import os
+
+import colorama
+import pyfiglet
+from colorama import Fore
+
 from plugins import core as a
-from colorama import Fore, Back, Style
 
 colorama.init()
-options = ['Site parsing', 'Ping' , 'Port Check' , 'Site Status' , 'Create DB' ,'GitHub', 'Exit']
+options = ['Site parsing', 'Ping', 'Port Check', 'Site Status', 'Create DB', 'GitHub', 'Exit']
+
 
 def display_menu():
-    print('Please select an option:')
+    ascii_banner = pyfiglet.figlet_format(". J C o r e", font="5lineoblique")
+    print(ascii_banner)
+    print(Fore.CYAN + f'Please select an option:')
     for i, option in enumerate(options):
-            print(Fore.RED + f'{i+1}. {option}')
+        print(Fore.CYAN + f'{i + 1}. {option}')
 
 
 def handle_selection(selection):
@@ -36,7 +41,8 @@ def handle_selection(selection):
     else:
         print('Invalid selection')
 
+
 if __name__ == '__main__':
     display_menu()
-    selection = int(input())
+    selection = int(input(Fore.LIGHTCYAN_EX + "Selection: "))
     handle_selection(selection)
